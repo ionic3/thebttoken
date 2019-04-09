@@ -1,0 +1,30 @@
+
+<ion-header>
+	<ion-navbar>
+	  	<button (click)="goback()" ion-button class="left_heder">
+      <img  src="assets/imgs/back.png"  />
+    </button>
+	    <ion-title>Payments</ion-title>
+  	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="content_payment">
+	<ion-row text-center (click)="ViewCollect()">
+		<div class="top">
+			<h3 text-center>Collect</h3>
+		</div>
+	</ion-row>
+
+	<ion-row text-center (click)="scanCode()">
+		<div class="center">
+			<h3 text-center>Pay</h3>
+		</div>
+	</ion-row>
+
+	<ion-row text-center (click)="ViewTransanction()">
+		<div class="bottom">
+			<h3 text-center>Bill</h3>
+		</div>
+	</ion-row>
+</ion-content>

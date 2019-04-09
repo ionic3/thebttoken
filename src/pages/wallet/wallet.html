@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+  	<button (click)="goback()" ion-button class="left_heder">
+      <img  src="assets/imgs/back.png"  />
+    </button>
+    <ion-title>{{currency}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="content_wallet" >
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+    	<ion-refresher-content></ion-refresher-content>
+  	</ion-refresher>
+	<ion-row class="top top_wallet">
+		<ion-col col-12 >
+			<h3>{{amount}}</h3>
+			<p> $ {{amount_usd}}</p>
+		</ion-col>
+	</ion-row> 
+	<ion-row class="center">
+		<ion-col col-12 class="top_center">
+			<h3>Deposit/Withdraw record</h3>
+		</ion-col>
+		<ion-list>
+		  	<ion-item *ngFor="let item of history">
+			    <div class="left">
+			    	<img *ngIf="item.type == 'deposit'"  src="assets/imgs/roll_in.png"  />
+			    	<img *ngIf="item.type == 'withdraw'"  src="assets/imgs/roll_out.png"  />
+			    </div>
+			    <div class="right">
+			    	<p class="top" text-left>{{item.txt_id}}</p>
+			    	<p *ngIf="item.type == 'withdraw'" class="center send"  text-right>-{{item.amount}}</p>
+			    	<p *ngIf="item.type == 'deposit'" class="center receive"  text-right>+{{item.amount}}</p>
+			    	<p class="bottom"  text-left>{{item.date_added}}</p>
+			    </div>
+		  	</ion-item>
+
+		</ion-list>
+		<p text-center class="data_history" *ngIf="count_history == 0">There is no data</p>
+
+		
+		
+
+	</ion-row>
+	<ion-row class="bottoms" ion-fixed>
+		<ion-col col-4 class="left" text-center (click)="ViewWithdraw()">
+			<img src="assets/imgs/asset-out.png"> Withdraw
+		</ion-col>
+		<ion-col col-4 class="center"  text-center (click)="ViewExchange()">
+			<img src="assets/imgs/asset-change.png"> Exchange
+		</ion-col>
+		<ion-col col-4 class="right"  text-center (click)="ViewDeposit()">
+			<img src="assets/imgs/asset-in.png"> Deposit
+		</ion-col>
+	</ion-row>
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="count_history > 0">
+		   	<ion-infinite-scroll-content></ion-infinite-scroll-content>
+		</ion-infinite-scroll>
+</ion-content>

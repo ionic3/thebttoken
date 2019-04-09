@@ -1,0 +1,108 @@
+page-markets {
+  .toolbar-background{
+    background: color($colors, header_bg);
+    color: #fff;
+  }
+  .toolbar-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #ffffff;
+      text-align: center;
+  }
+  .scroll-content{
+    background: #fff !important;
+  }
+	
+	.content_markets h3{
+		color: #fff;
+	    font-size: 15px;
+	    font-weight: 400;
+	    margin-bottom: 26px;
+        margin-top: 10px !important;
+	}
+	.top_market{
+		margin-bottom: 0px;
+	}
+  .header-md::after,.header-ios::after{
+    display: none;
+    content: '';
+  }
+	.top_market img{
+		width: 10px;
+		margin-bottom: -1px;
+	}
+  .top_market::after{
+    display: none;
+  }
+	.top_market p {
+    	
+    }
+    .top_market .left{
+    	
+    	color: #403f3e;
+    font-size: 13px;
+    line-height: 35px;
+    }
+    .top_market .right{
+    	margin-top: 3px;
+    	margin-left: 2px;
+    }
+    .top_market ion-col{
+    	padding: 0px;
+    }
+   	.item_markets ion-col{
+   		line-height: 50px;
+   	}
+   	.item_markets .name img{
+   		width: 35px;
+    
+      float: left;
+      margin-top: 7px;
+      margin-right: 10px;
+    margin-left: 10px;
+   	}
+   	.item_markets .change img{
+	    
+	    width: 8px;
+	    margin-left: 3px;
+	    margin-bottom: 0px;
+   	}
+   	.item_markets .right{
+   		color: #272626;
+      font-size: 16px;
+      font-weight: 500;
+   	}
+   	
+   	.item_markets .price{
+   		color: #63605d;
+   	}
+   	.item_markets .price_color{
+   		color: #F44336;
+     font-weight: bold;
+
+   	}
+   	.item_markets .change .left{
+   		border-radius: 5px;
+      color: #fff;
+      font-size: 13px;
+      width: 72px;
+      padding: 5px 7px;
+      width: 81px;
+      height: 35px;
+      line-height: 25px;
+      margin-top: 8px;
+      background: #F44336;
+      display: block;
+      margin: 0 auto;
+      margin-top: 8px;
+   	}
+   	.up.item_markets  .price_color{
+   		color: #4CAF50;
+   	}
+   	.up.item_markets .change  .left{
+   		background: #4CAF50;
+   	}
+   	.content_markets .item_markets{
+      border-bottom: 1px solid #e6e6e6;
+    }
+}

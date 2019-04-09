@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+  	<button (click)="goback()" ion-button class="left_heder">
+      <img  src="assets/imgs/back.png"  />
+    </button>
+    <ion-title>Deposit - {{currency}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="content_deposit" text-center *ngIf="address">
+	<img class="chart" src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={{address}}&message={{currency}}">
+	<p>{{address}}</p>
+  <p class="error">Do not transfer any assets except this currency to this address or you will not be able to retrieve it.</p>
+	<button ion-button (click)="CopyWallet(address)">COPY ADDRESS</button>
+	<!-- <img class="background" src="assets/imgs/qr_bottom_bg.png" /> -->
+</ion-content>
