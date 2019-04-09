@@ -42,16 +42,25 @@
             </ion-input>
             <ion-icon name="lock" item-right></ion-icon>
          </ion-item>
+
+         <ion-item class="bg_readonly" (click)="scanCode()">
+            
+            <label>{{email_sponser}}</label>
+            <ion-icon name="qr-scanner" item-right></ion-icon>
+            
+
+
+         </ion-item>
       </ion-list>
       <div margin-top  class="customer_width">
          <button ion-button type="submit" block>Create Account </button>
       </div>
       
    </form>
-   <div class="customer_width" *ngIf="customer_sponser === ''">
+   <!-- <div class="customer_width" *ngIf="customer_sponser === ''">
    
-      <button (click)="scanCode()" style="background: #FF5722" ion-button color="dark"  block>Scan Qr code sponser</button>
-   </div> 
+      <button  style="background: #FF5722" ion-button color="dark"  block>Scan Qr code sponser</button>
+   </div>  -->
 
 
 </ion-content>

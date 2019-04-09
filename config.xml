@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.asipay" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Asipay</name>
-    <description>Asipay.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Asipay</author>
+<widget id="io.ionic.tbt" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>The Best Token</name>
+    <description>The Best Token</description>
+    <author email="hi@ionicframework" href="http://ionicframework.com/">The Best Token</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -89,7 +89,8 @@
     <plugin name="cordova-plugin-camera" spec="4.0.3" />
     <plugin name="cordova-plugin-file-transfer" spec="1.7.1" />
     <plugin name="cordova-plugin-crop" spec="0.4.0" />
-    <engine name="android" spec="6.3.0" />
     <plugin name="cordova-plugin-touch-id" spec="3.4.0" />
     <plugin name="cordova-plugin-android-fingerprint-auth" spec="1.5.0" />
+    <engine name="android" spec="6.3.0" />
+    <engine name="ios" spec="~4.5.5" />
 </widget>

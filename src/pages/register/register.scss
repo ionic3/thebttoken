@@ -210,6 +210,14 @@ page-register {
   .scroll-content {
        margin-bottom: 0px; 
   }
+  .bg_readonly{
+    background: #272727;
+  }
+  .bg_readonly label{
+    color: #9e9b9b;
+    font-size: 12px;
+    padding-left: 16px;
+  }
 }
 .successqrcode .toast-bottom{
   background: #4caf50 !important;

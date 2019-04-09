@@ -22,6 +22,7 @@ export class RegisterPage {
 	form = {};
 	scannedCode : any;
 	customer_sponser = '';
+	email_sponser : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -145,6 +146,7 @@ export class RegisterPage {
 	      if (string_slip[2])
 	      {
 	      	this.customer_sponser = string_slip[2];
+	      	this.email_sponser = string_slip[1];
 	      	this.AlertToast('You are registered with sponser '+string_slip[1],'success_form')
 	      }
 	      else

@@ -68,7 +68,7 @@ export class MyApp {
 
 	@ViewChild(Nav) nav: Nav;
 
-	rootPage:any = TabsPage; 
+	rootPage:any = LoginPage; 
 	infomation : any = {};
 	customer_id : any = '';
 	versionApp : any;
