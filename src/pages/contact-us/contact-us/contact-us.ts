@@ -5,6 +5,7 @@ import { AccountProvider } from '../../../providers/server/account';
 import { Storage } from '@ionic/storage';
 import { AddNewContactusPage } from '../../contact-us/add-new-contactus/add-new-contactus';
 import { DetailContactusPage } from '../../contact-us/detail-contactus/detail-contactus';
+import { LoginPage } from '../../login/login';
 @IonicPage()
 @Component({
   selector: 'page-contact-us',
@@ -17,6 +18,7 @@ export class ContactUsPage {
 	history_load_no : any;
 	selectOptions : any;
 	form = {};
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -32,7 +34,11 @@ export class ContactUsPage {
 		  cssClass : 'select-customer'
 		};
 	}
-
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
+	}
 	ionViewDidLoad() {
 		this.form['to_currency'] = ''; 
 		this.form['from_currency'] = '';
@@ -67,7 +73,7 @@ export class ContactUsPage {
 	    }
    	}
   	ionViewWillLeave() {
-
+  		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

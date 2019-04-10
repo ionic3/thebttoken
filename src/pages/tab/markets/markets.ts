@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams,ToastController,Platform ,AlertCont
 import { LoadingController } from 'ionic-angular';
 import { AccountProvider } from '../../../providers/server/account';
 import { Storage } from '@ionic/storage';
-
+import { LoginPage } from '../../login/login';
 @IonicPage()
 @Component({
   selector: 'page-markets',
@@ -13,6 +13,7 @@ export class MarketsPage {
 	customer_id : any;
 	price_coin = {};
 	change_coin = {};
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -23,6 +24,15 @@ export class MarketsPage {
 		public storage: Storage,
 		public AccountServer : AccountProvider
 		) {
+	}
+
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
+	}
+	ionViewWillLeave(){
+		clearTimeout(this.timeout);
 	}
 
 	ionViewDidLoad() {

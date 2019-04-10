@@ -4,7 +4,7 @@ import { LoadingController } from 'ionic-angular';
 import { AccountProvider } from '../../../providers/server/account';
 import { Screenshot } from '@ionic-native/screenshot';
 import { Storage } from '@ionic/storage';
-
+import { LoginPage } from '../../login/login';
 @IonicPage()
 @Component({
   selector: 'page-profit-daily',
@@ -17,6 +17,7 @@ export class ProfitDailyPage {
 	history_load_no : any;
 	selectOptions : any;
 	form = {};
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -32,6 +33,12 @@ export class ProfitDailyPage {
 		  title: ' ',
 		  cssClass : 'select-customer'
 		};
+	}
+
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
 	}
 
 	ionViewDidLoad() {
@@ -70,6 +77,7 @@ export class ProfitDailyPage {
 	    }
    	}
   	ionViewWillLeave() {
+  		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

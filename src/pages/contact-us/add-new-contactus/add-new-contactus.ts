@@ -4,7 +4,7 @@ import { LoadingController } from 'ionic-angular';
 import { AccountProvider } from '../../../providers/server/account';
 
 import { Storage } from '@ionic/storage';
-
+import { LoginPage } from '../../login/login';
 @IonicPage()
 @Component({
   selector: 'page-add-new-contactus',
@@ -16,6 +16,7 @@ export class AddNewContactusPage {
 	currency : any;
 	balance : any;
 	address : any;
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -32,7 +33,11 @@ export class AddNewContactusPage {
 		this.customer_id = this.navParams.get("customer_id");
 		
 	}
-
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
+	}
 	ionViewWillEnter() {
 		
 		let elements = document.querySelectorAll(".tabbar.show-tabbar");
@@ -46,6 +51,7 @@ export class AddNewContactusPage {
 	
 	
   	ionViewWillLeave() {
+  		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

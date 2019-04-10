@@ -8,6 +8,7 @@ import { ProfitDailyPage } from '../../eanings/profit-daily/profit-daily';
 import { SystemCommissionPage } from '../../eanings/system-commission/system-commission';
 import { DirectCommissionPage } from '../../eanings/direct-commission/direct-commission';
 import { LeaderCommissionPage } from '../../eanings/leader-commission/leader-commission';
+import { LoginPage } from '../../login/login';
 @IonicPage()
 @Component({
   selector: 'page-eanings',
@@ -16,6 +17,7 @@ import { LeaderCommissionPage } from '../../eanings/leader-commission/leader-com
 export class EaningsPage {
 	customer_id : any;
 	wallet = {};
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -28,6 +30,12 @@ export class EaningsPage {
 		
 	) {
 		
+	}
+
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
 	}
 
 	ionViewDidLoad() {
@@ -84,6 +92,7 @@ export class EaningsPage {
 	    }
    	}
   	ionViewWillLeave() {
+  		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

@@ -6,6 +6,7 @@ import { AccountProvider } from '../../../providers/server/account';
 import { Storage } from '@ionic/storage';
 import { WalletPage } from '../../wallet/wallet';
 import { ListNotificationPage } from '../../notification/list-notification/list-notification';
+import { LoginPage } from '../../login/login';
 @IonicPage()
 @Component({
   selector: 'page-assets',
@@ -17,7 +18,7 @@ export class AssetsPage {
 	total_usd :any;
 	customer_id : any;
 	list_notification : any;
-	
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -30,11 +31,16 @@ export class AssetsPage {
 	) {
 	}
 
-
-	
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
+	}
+	ionViewWillLeave(){
+		clearTimeout(this.timeout);
+	}
 
 	ionViewDidLoad() {
-
 		let loading = this.loadingCtrl.create({
 	    	content: 'Please wait...'
 	  	});
@@ -120,17 +126,7 @@ export class AssetsPage {
 	}
 
 	onScroll(event){
-
-		/*if (parseFloat(event.scrollTop) >= 68)
-		{
-			document.querySelector(".card_capit_header")['style'].opacity = '0';
-			document.querySelector(".card_header")['style'].opacity = '1';
-		}
-		else{
-			document.querySelector(".card_capit_header")['style'].opacity = '1';
-			document.querySelector(".card_header")['style'].opacity = '0';
-		}*/
-		
+		//console.log('onScroll');
 	}
 
 

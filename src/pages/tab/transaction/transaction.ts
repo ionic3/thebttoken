@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { LoginPage } from '../../login/login';
 /**
  * Generated class for the TransactionPage page.
  *
@@ -14,12 +14,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'transaction.html',
 })
 export class TransactionPage {
+	timeout : any;
+	constructor(public navCtrl: NavController, public navParams: NavParams) {
+	}
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TransactionPage');
-  }
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
+	}
+	ionViewWillLeave(){
+		clearTimeout(this.timeout);
+	}
+	ionViewDidLoad() {
+	console.log('ionViewDidLoad TransactionPage');
+	}
 
 }

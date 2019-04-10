@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { DepositPage } from '../deposit/deposit';
 import { WithdrawPage } from '../withdraw/withdraw';
 import { ExchangePage } from '../exchange/exchange';
+import { LoginPage } from '../login/login';
 /**
  * Generated class for the WalletPage page.
  *
@@ -25,6 +26,7 @@ export class WalletPage {
 	customer_id : any;
 	history : any;
 	count_history = 0;
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -34,6 +36,12 @@ export class WalletPage {
 		public loadingCtrl: LoadingController,
 		public storage: Storage,
 		public AccountServer : AccountProvider) {
+	}
+
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
 	}
 
 	ionViewDidLoad() {
@@ -73,6 +81,7 @@ export class WalletPage {
 	    }
    	}
   	ionViewWillLeave() {
+  		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

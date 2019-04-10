@@ -13,6 +13,7 @@ export class ModifyPasswordPage {
 	customer_id : any;
 	form = {};
 	selectOptions : any;
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -27,6 +28,12 @@ export class ModifyPasswordPage {
 		  title: 'Password Type',
 		  cssClass : 'select-customer-forgot'
 		};
+	}
+
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
 	}
 
 	ionViewDidLoad() {
@@ -52,6 +59,7 @@ export class ModifyPasswordPage {
 	    }
    	}
   	ionViewWillLeave() {
+  		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

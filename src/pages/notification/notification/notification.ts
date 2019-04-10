@@ -4,7 +4,7 @@ import { LoadingController } from 'ionic-angular';
 import { AccountProvider } from '../../../providers/server/account';
 
 import { Storage } from '@ionic/storage';
-
+import { LoginPage } from '../../login/login';
 @Component({
   selector: 'page-notification',
   templateUrl: 'notification.html',
@@ -12,6 +12,7 @@ import { Storage } from '@ionic/storage';
 export class NotificationPage {
 	customer_id : any;
 	history = {};
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -25,7 +26,11 @@ export class NotificationPage {
 	) {
 		
 	}
-
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
+	}
 	ionViewDidLoad() {
 		
 		let loading = this.loadingCtrl.create({
@@ -56,6 +61,7 @@ export class NotificationPage {
 	    }
    	}
   	ionViewWillLeave() {
+  		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

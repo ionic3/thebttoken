@@ -11,6 +11,7 @@ import { AuthenticatorLoginPage } from '../../settings/authenticator-login/authe
 import { AboutUsPage } from '../../settings/about-us/about-us';
 import { TouchID } from '@ionic-native/touch-id';
 import { AndroidFingerprintAuth } from '@ionic-native/android-fingerprint-auth';
+import { LoginPage } from '../../login/login';
 @IonicPage()
 @Component({
   selector: 'page-settings',
@@ -19,6 +20,7 @@ import { AndroidFingerprintAuth } from '@ionic-native/android-fingerprint-auth';
 export class SettingsPage {
 	customer_id : any;
 	infomation = {};
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -39,6 +41,11 @@ export class SettingsPage {
 		
 		
 				
+	}
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
 	}
 
 	ionViewWillEnter() {
@@ -78,6 +85,7 @@ export class SettingsPage {
 	    }
    	}
   	ionViewWillLeave() {
+  		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

@@ -5,6 +5,7 @@ import { AccountProvider } from '../../../providers/server/account';
 
 import { Storage } from '@ionic/storage';
 import { SettingsPage } from '../settings/settings';
+import { LoginPage } from '../../login/login';
 @IonicPage()
 @Component({
   selector: 'page-verify-email',
@@ -24,6 +25,7 @@ export class VerifyEmailPage {
 	infomation = {};
 	status_step1 : any;
 	status_step2 : any;
+	timeout : any;
 	
 	constructor(
 		public navCtrl: NavController, 
@@ -37,6 +39,12 @@ export class VerifyEmailPage {
 		
 	) {
 		
+	}
+
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
 	}
 
 	ionViewDidLoad() {
@@ -186,6 +194,7 @@ export class VerifyEmailPage {
 	    }
    	}
   	ionViewWillLeave() {
+  		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { CollectPage } from '../collect/collect';
 import { TransanctionsPage } from '../transanctions/transanctions';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { LoginPage } from '../../login/login';
 @IonicPage()
 @Component({
   selector: 'page-payment',
@@ -13,6 +14,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 })
 export class PaymentPage {
 	customer_id : any;
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -25,6 +27,12 @@ export class PaymentPage {
 		private barcodeScanner: BarcodeScanner
 		) {
   	}
+
+  	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
+	}
 
 	ionViewDidLoad() {
 		//this.PaymentSubmit('35k7m2fgn6tY1crs7qb7eLgofQKKBsmAhG','BTC',0.1);
@@ -88,6 +96,7 @@ export class PaymentPage {
 	    }
    	}
   	ionViewWillLeave() {
+  		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

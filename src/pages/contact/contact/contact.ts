@@ -5,7 +5,7 @@ import { AccountProvider } from '../../../providers/server/account';
 
 import { AddNewWalletPage } from '../add-new-wallet/add-new-wallet';
 import { Storage } from '@ionic/storage';
-
+import { LoginPage } from '../../login/login';
 
 @IonicPage()
 @Component({
@@ -17,6 +17,7 @@ export class ContactPage {
 	currency : any;
 	history : any;
 	count_history = 0;
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -28,7 +29,11 @@ export class ContactPage {
 		public AccountServer : AccountProvider
 		) {
 	}
-
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
+	}
 	ionViewDidLoad() {
 		
 		this.currency = this.navParams.get("currency");
@@ -107,6 +112,7 @@ export class ContactPage {
 
    
   	ionViewWillLeave() {
+  		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

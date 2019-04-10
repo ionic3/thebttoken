@@ -82,8 +82,8 @@
       "cordova-plugin-android-fingerprint-auth": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

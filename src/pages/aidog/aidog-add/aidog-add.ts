@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ToastController,Platform ,AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { AccountProvider } from '../../../providers/server/account';
-
+import { LoginPage } from '../../login/login';
 import { Storage } from '@ionic/storage';
 @IonicPage()
 @Component({
@@ -13,7 +13,8 @@ export class AidogAddPage {
 	currency : any;
 	customer_id : any;
 	amount_active : any;
-	form = {}
+	form = {};
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -25,6 +26,12 @@ export class AidogAddPage {
 		public AccountServer : AccountProvider
 	) {}
 
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
+	}
+	
 	ionViewDidLoad() {
 		this.currency = this.navParams.get("currency");
 		this.customer_id = this.navParams.get("customer_id");
@@ -60,6 +67,7 @@ export class AidogAddPage {
 	    }
    	}
   	ionViewWillLeave() {
+  		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

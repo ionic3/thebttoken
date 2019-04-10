@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams,ToastController,Platform ,AlertCont
 import { LoadingController } from 'ionic-angular';
 import { AccountProvider } from '../../providers/server/account';
 import { Storage } from '@ionic/storage';
-
+import { LoginPage } from '../login/login';
 @IonicPage()
 @Component({
   selector: 'page-exchange',
@@ -23,6 +23,7 @@ export class ExchangePage {
 	price_from : any;
 	data_balance : any;
 	data_price : any;
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -40,6 +41,12 @@ export class ExchangePage {
 		
 	}
 
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
+	}
+	
 	ionViewWillEnter() {
 		
 		let elements = document.querySelectorAll(".tabbar.show-tabbar");
@@ -50,6 +57,7 @@ export class ExchangePage {
 	    }
    	}
   	ionViewWillLeave() {
+  		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

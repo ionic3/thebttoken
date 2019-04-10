@@ -6,7 +6,7 @@ import { AccountProvider } from '../../providers/server/account';
 import { ContactPage } from '../contact/contact/contact';
 import { Storage } from '@ionic/storage';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-
+import { LoginPage } from '../login/login';
 @IonicPage()
 @Component({
   selector: 'page-withdraw',
@@ -18,6 +18,7 @@ export class WithdrawPage {
 	currency : any;
 	balance : any;
 	address : any;
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -30,6 +31,13 @@ export class WithdrawPage {
 		private barcodeScanner: BarcodeScanner
 		) {
 	}
+
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
+	}
+	
 
 	ionViewDidLoad() {
 		this.currency = this.navParams.get("currency");
@@ -61,6 +69,7 @@ export class WithdrawPage {
 
 	
   	ionViewWillLeave() {
+  		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

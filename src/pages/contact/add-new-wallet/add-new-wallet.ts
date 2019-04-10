@@ -5,6 +5,7 @@ import { AccountProvider } from '../../../providers/server/account';
 
 import { Storage } from '@ionic/storage';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { LoginPage } from '../../login/login';
 @IonicPage()
 @Component({
   selector: 'page-add-new-wallet',
@@ -15,6 +16,7 @@ export class AddNewWalletPage {
 	toppings = 'bacon';
 	selectOptions : any;
 	customer_id : any;
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -31,7 +33,11 @@ export class AddNewWalletPage {
 		  cssClass : 'select-customer'
 		};
 	}
-
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
+	}
 	ionViewDidLoad() {
 
 		if (this.navParams.get("currency"))
@@ -119,6 +125,7 @@ export class AddNewWalletPage {
 	} 
 
 	ionViewWillLeave() {
+		clearTimeout(this.timeout);
   		let elements = document.querySelectorAll(".tabbar.show-tabbar");
 		if (elements != null) {
 	        Object.keys(elements).map((key) => {

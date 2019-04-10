@@ -18,6 +18,7 @@ import { Camera } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { PaymentPage } from '../../payment/payment/payment';
 import { AidogPage } from '../../aidog/aidog/aidog';
+
 @IonicPage()
 @Component({
   selector: 'page-profile',
@@ -29,6 +30,7 @@ export class ProfilePage {
 	img_camera = '';
 	selectOptions : any;
 	form = {};
+	timeout : any;
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
@@ -48,6 +50,17 @@ export class ProfilePage {
 		};
 	}
 	private fileTransfer: FileTransferObject = this.transfer.create();
+
+
+	ionViewDidEnter(){
+		this.timeout = setTimeout(function() {
+			this.navCtrl.setRoot(LoginPage);
+		}.bind(this), 300000);
+	}
+	ionViewWillLeave(){
+		clearTimeout(this.timeout);
+	}
+
 	ionViewDidLoad() {
 
 		let loading = this.loadingCtrl.create({
