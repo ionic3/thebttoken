@@ -189,19 +189,28 @@ export class MyApp {
 			        	splashScreen.hide();
 						if (data.status == 'complete')
 						{
-							if (parseInt(data.security.fingerprint.status)==1)
+							
+							if (parseInt(data.status_user) == 0)
 							{
-								this.Fingerprint_login();
+								if (parseInt(data.security.fingerprint.status)==1)
+								{
+									this.Fingerprint_login();
+								}
+								else
+								{
+									this.nav.setRoot(TabsPage);
+								}
 							}
 							else
 							{
-								this.nav.setRoot(TabsPage);
+								this.storage.remove('customer_id');
+            					//this.nav.setRoot(LoginPage);
 							}
 						}
 						else
 						{
 							this.AlertToast(data.message,'error_form');
-							this.platform.exitApp();
+							//this.platform.exitApp();
 						}
 			        },
 			        (err) => {
