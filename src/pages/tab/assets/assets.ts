@@ -89,7 +89,17 @@ export class AssetsPage {
 							this.price_coin['bitcoincash'] = data.bch_usd;
 							this.price_coin['dogecoin'] = data.doge_usd;
 
-							this.total_usd = ((parseFloat(this.balance['coin'])*parseFloat(this.price_coin['coin'])/100000000)+(parseFloat(this.balance['bitcoin'])*parseFloat(this.price_coin['bitcoin'])/100000000)+(parseFloat(this.balance['dash'])*parseFloat(this.price_coin['dash'])/100000000)+(parseFloat(this.balance['eos'])*parseFloat(this.price_coin['eos'])/100000000)+(parseFloat(this.balance['ethereum'])*parseFloat(this.price_coin['ethereum'])/100000000)+(parseFloat(this.balance['litecoin'])*parseFloat(this.price_coin['litecoin'])/100000000)+(parseFloat(this.balance['ethereum'])*parseFloat(this.price_coin['ethereum'])/100000000)+(parseFloat(this.balance['ripple'])*parseFloat(this.price_coin['ripple'])/100000000)+(parseFloat(this.balance['tether'])*parseFloat(this.price_coin['tether'])/100000000)+(parseFloat(this.balance['dogecoin'])*parseFloat(this.price_coin['dogecoin'])/100000000)+(parseFloat(this.balance['bitcoincash'])*parseFloat(this.price_coin['bitcoincash'])/100000000)).toFixed(2);
+							this.total_usd = (
+								(parseFloat(this.balance['coin'])*parseFloat(this.price_coin['coin'])/100000000)+
+								(parseFloat(this.balance['bitcoin'])*parseFloat(this.price_coin['bitcoin'])/100000000)+
+								(parseFloat(this.balance['dash'])*parseFloat(this.price_coin['dash'])/100000000)+
+								(parseFloat(this.balance['eos'])*parseFloat(this.price_coin['eos'])/100000000)+
+								(parseFloat(this.balance['ethereum'])*parseFloat(this.price_coin['ethereum'])/100000000)+
+								(parseFloat(this.balance['litecoin'])*parseFloat(this.price_coin['litecoin'])/100000000)+
+								(parseFloat(this.balance['ripple'])*parseFloat(this.price_coin['ripple'])/100000000)+
+								(parseFloat(this.balance['tether'])*parseFloat(this.price_coin['tether'])/100000000)+
+								(parseFloat(this.balance['dogecoin'])*parseFloat(this.price_coin['dogecoin'])/100000000)+
+								(parseFloat(this.balance['bitcoincash'])*parseFloat(this.price_coin['bitcoincash'])/100000000)).toFixed(2);
 						}
 						else
 						{
@@ -175,7 +185,17 @@ export class AssetsPage {
 					this.price_coin['dogecoin'] = data.doge_usd;
 
 
-					this.total_usd = ((parseFloat(this.balance['coin'])*parseFloat(this.price_coin['coin'])/100000000)+(parseFloat(this.balance['bitcoin'])*parseFloat(this.price_coin['bitcoin'])/100000000)+(parseFloat(this.balance['dash'])*parseFloat(this.price_coin['dash'])/100000000)+(parseFloat(this.balance['eos'])*parseFloat(this.price_coin['eos'])/100000000)+(parseFloat(this.balance['ethereum'])*parseFloat(this.price_coin['ethereum'])/100000000)+(parseFloat(this.balance['litecoin'])*parseFloat(this.price_coin['litecoin'])/100000000)+(parseFloat(this.balance['ethereum'])*parseFloat(this.price_coin['ethereum'])/100000000)+(parseFloat(this.balance['ripple'])*parseFloat(this.price_coin['ripple'])/100000000)+(parseFloat(this.balance['tether'])*parseFloat(this.price_coin['tether'])/100000000)+(parseFloat(this.balance['dogecoin'])*parseFloat(this.price_coin['dogecoin'])/100000000)+(parseFloat(this.balance['bitcoincash'])*parseFloat(this.price_coin['bitcoincash'])/100000000)).toFixed(2);
+					this.total_usd = (
+						(parseFloat(this.balance['coin'])*parseFloat(this.price_coin['coin'])/100000000)+
+						(parseFloat(this.balance['bitcoin'])*parseFloat(this.price_coin['bitcoin'])/100000000)+
+						(parseFloat(this.balance['dash'])*parseFloat(this.price_coin['dash'])/100000000)+
+						(parseFloat(this.balance['eos'])*parseFloat(this.price_coin['eos'])/100000000)+
+						(parseFloat(this.balance['ethereum'])*parseFloat(this.price_coin['ethereum'])/100000000)+
+						(parseFloat(this.balance['litecoin'])*parseFloat(this.price_coin['litecoin'])/100000000)+
+						(parseFloat(this.balance['ripple'])*parseFloat(this.price_coin['ripple'])/100000000)+
+						(parseFloat(this.balance['tether'])*parseFloat(this.price_coin['tether'])/100000000)+
+						(parseFloat(this.balance['dogecoin'])*parseFloat(this.price_coin['dogecoin'])/100000000)+
+						(parseFloat(this.balance['bitcoincash'])*parseFloat(this.price_coin['bitcoincash'])/100000000)).toFixed(2);
 				}
 				
 				refresher.complete();
