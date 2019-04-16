@@ -151,8 +151,8 @@ export class AccountProvider {
       .catch(this.catchError)
     }
 
-    DisableInvestment(customer_id: string,currency : string){
-      let body = {customer_id: customer_id,currency : currency};
+    DisableInvestment(customer_id: string,currency : string, password_transaction : string){
+      let body = {customer_id: customer_id,currency : currency, password_transaction : password_transaction};
       return this.http.post(MyConfig.data.url+'/api/investment/disable-package',body)
       .do(this.logResponse)
       .map(this.extractData)

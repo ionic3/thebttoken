@@ -106,48 +106,76 @@ export class AidogPage {
 	    }
   	}
 	DisableInvestment(currency){
-		const confirm = this.alertCtrl.create({
-		title: 'Do you want to stop ai- dog?',
-		message: 'Select Ok to stop ai-dog. Select cancel to continue',
-		buttons: [
-		{
-		  text: 'Cancel',
-		  handler: () => {
-		    
-		  }
-		},
-		{
-		  	text: 'Ok',
-		  	handler: () => {
-		  		let loading = this.loadingCtrl.create({
-			    content: 'Please wait...'
-			  	});
+		let alert = this.alertCtrl.create({
+	    title: 'Do you want to stop ai- dog?',
+	    cssClass:'prompt_alert_customer',
+	    enableBackdropDismiss : false,
+	    inputs: [
+	      {
+	        name: 'password_transaction',
+	        placeholder: 'Please input the transaction password',
+	        type: 'password'
+	      }
+	    ],
+	    buttons: [
+	      {
+	        text: 'Cancel',
+	        role: 'cancel',
+	        handler: data => {
+	          //this.status[currency] = 'off';
+	        }
+	      },
+	      {
+	        text: 'OK',
+	        handler: data => {
+        		if (data.password_transaction == '' || data.password_transaction == undefined)
+	        	{
+	        		this.AlertToast('Please enter a password transaction','error_form');
+	        		return false;
+	        	}
+	        	else
+	        	{
+	        		let loading = this.loadingCtrl.create({
+				    content: 'Please wait...'
+				  	});
 
-			  	loading.present();
+				  	loading.present();
 
-			  	this.AccountServer.DisableInvestment(this.customer_id,currency)
-		        .subscribe((data) => {
-		        	loading.dismiss();
-					if (data.status == 'complete')
-					{
-						this.AlertToast('Disable Ai-dog successfully','success_form');
-						this.status[currency] = 'off';
-						this.status_active[currency] = 'none';
-						return true;
+				  	this.AccountServer.DisableInvestment(this.customer_id,currency,data.password_transaction)
+			        .subscribe((data) => {
+			        	loading.dismiss();
+						if (data.status == 'complete')
+						{
+							this.AlertToast('Disable Ai-dog successfully','success_form');
+							this.status[currency] = 'off';
+							this.status_active[currency] = 'none';
+							return true;
 
-					}
-					else
-					{
-						this.AlertToast(data.message,'error_form');
-						return false;
-					}
-		        })
-		   		
-		  	}
-		}
-		] 
-		});
-		confirm.present();
+						}
+						else
+						{
+							this.AlertToast(data.message,'error_form');
+							return false;
+						}
+			        },
+			        (err) => {
+			        	loading.dismiss();
+			        	if (err)
+			        	{
+			        		this.SeverNotLogin();
+			        		return false;
+			        	}
+			        })
+
+	        	}
+	        	
+				
+				
+	        }
+	      }
+	    ]
+	  });
+	  alert.present();
 	}
 
 	ViewReccord(){
