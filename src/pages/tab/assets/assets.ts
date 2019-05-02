@@ -40,7 +40,8 @@ export class AssetsPage {
 		clearTimeout(this.timeout);
 	}
 
-	ionViewDidLoad() {
+	ionViewWillEnter() {
+		document.querySelector(".currency_div")['style'].height = this.platform.height()-190+'px'; 
 		let loading = this.loadingCtrl.create({
 	    	content: 'Please wait...'
 	  	});
@@ -126,9 +127,7 @@ export class AssetsPage {
 	}
 
 
-	ionViewWillEnter() {
-		document.querySelector(".currency_div")['style'].height = this.platform.height()-190+'px'; 
-   	}
+	
   	
 
 	ViewWallet(currency,amount,amount_usd){

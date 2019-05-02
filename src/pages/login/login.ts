@@ -39,6 +39,7 @@ export class LoginPage {
 		) {
 	}
 	ionViewDidLoad() {
+		
 		this.count_submit_2fa = 0;
 		this.count_login = 0;
 	}
@@ -97,8 +98,7 @@ export class LoginPage {
 							this.customer_id = data.customer_id;
 							if (parseInt(data.status_fingerprint) == 0)
 							{
-								this.navCtrl.setRoot(TabsPage);
-								
+								this.navCtrl.setRoot(TabsPage,{tabIndex: 1});
 							}
 							else
 							{
@@ -196,7 +196,10 @@ export class LoginPage {
 		                    clientId: 'kjgjkgjkgkjgkjgkjkgkjgkj',
 		                    username: 'myUsername',
 		                    password: 'myPassword',
-		                    locale : 'en_US'
+		                    locale : 'en_US',
+		                    dialogTitle : 'Fingerprint Auth',
+		                    dialogMessage : 'Scan your fingerprint please.',
+		                    dialogHint : ''
 		                })
 		                .then(result => {
 		                    if (result.withFingerprint) 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ToastController,Platform ,AlertController} from 'ionic-angular';
-import { LoadingController } from 'ionic-angular';
+import { LoadingController ,App} from 'ionic-angular';
 import { AccountProvider } from '../../../providers/server/account';
 import { Storage } from '@ionic/storage';
 
@@ -41,7 +41,8 @@ export class ProfilePage {
 		public storage: Storage,
 		public AccountServer : AccountProvider,
 		private camera: Camera,
-    	private transfer: FileTransfer
+    	private transfer: FileTransfer,
+    	public app : App
     	
 		) {
 		this.selectOptions = {
@@ -181,11 +182,13 @@ export class ProfilePage {
         {
           text: 'Logout',
           handler: () => {
-            this.storage.remove('customer_id');
-           
-            this.navCtrl.setRoot(LoginPage);
+          	
+          	
+           	this.storage.remove('customer_id'); 
+            this.app.getRootNav().setRoot(LoginPage);
+            //this.navCtrl.parent.select(0);
           }
-        }
+        } 
       ]
     });
     confirm.present();
